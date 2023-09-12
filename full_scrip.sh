@@ -6,7 +6,7 @@ do
         echo "o" >> filechange.txt
     done
     git add .
-    git commit -m"scrip auto push"
+    git commit -m"ok"
     git push origin main
 
 done
