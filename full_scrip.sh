@@ -5,8 +5,6 @@ do
     do
         echo "o" >> filechange.txt
     done
-    git add .
-    git commit -m"ok"
-    git push origin main
+    ./git.sh
 
 done
