@@ -1,9 +1,0 @@
-#!/bin/bash
-for i in {1..2}
-do
-    echo "o" >> filechange.txt
-    git add .
-    git commit -m"ok"
-    git push origin main
-
-done
