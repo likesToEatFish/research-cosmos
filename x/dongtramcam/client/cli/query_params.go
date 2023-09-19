@@ -3,7 +3,7 @@ package cli
 import (
 	"context"
 
-	"dongtramcam/x/dongtramcam/types"
+	"github.com/DongCoNY/research-cosmos/x/dongtramcam/types"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/spf13/cobra"

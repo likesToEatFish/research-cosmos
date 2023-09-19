@@ -23,7 +23,7 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
-func init() { proto.RegisterFile("dongtramcam/tx.proto", fileDescriptor_626bed35b2576e4a) }
+func init() { proto.RegisterFile("github.com/DongCoNY/research-cosmos/tx.proto", fileDescriptor_626bed35b2576e4a) }
 
 var fileDescriptor_626bed35b2576e4a = []byte{
 	// 105 bytes of a gzipped FileDescriptorProto
@@ -75,5 +75,5 @@ var _Msg_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*MsgServer)(nil),
 	Methods:     []grpc.MethodDesc{},
 	Streams:     []grpc.StreamDesc{},
-	Metadata:    "dongtramcam/tx.proto",
+	Metadata:    "github.com/DongCoNY/research-cosmos/tx.proto",
 }

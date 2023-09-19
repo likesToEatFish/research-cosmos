@@ -3,8 +3,8 @@ package keeper_test
 import (
 	"testing"
 
-	testkeeper "dongtramcam/testutil/keeper"
-	"dongtramcam/x/dongtramcam/types"
+	testkeeper "github.com/DongCoNY/research-cosmos/testutil/keeper"
+	"github.com/DongCoNY/research-cosmos/x/dongtramcam/types"
 	"github.com/stretchr/testify/require"
 )
 

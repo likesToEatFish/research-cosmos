@@ -10,7 +10,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"dongtramcam/app"
+	"github.com/DongCoNY/research-cosmos/app"
 
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"

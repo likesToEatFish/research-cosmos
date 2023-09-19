@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"dongtramcam/app"
+	"github.com/DongCoNY/research-cosmos/app"
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	"github.com/cosmos/cosmos-sdk/codec"
 	"github.com/cosmos/cosmos-sdk/simapp"

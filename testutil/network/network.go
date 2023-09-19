@@ -19,7 +19,7 @@ import (
 	tmrand "github.com/tendermint/tendermint/libs/rand"
 	tmdb "github.com/tendermint/tm-db"
 
-	"dongtramcam/app"
+	"github.com/DongCoNY/research-cosmos/app"
 )
 
 type (

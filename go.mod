@@ -1,4 +1,4 @@
-module dongtramcam
+module github.com/DongCoNY/research-cosmos
 
 go 1.18
 

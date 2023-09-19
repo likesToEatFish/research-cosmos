@@ -118,7 +118,7 @@ func init() {
 	proto.RegisterType((*QueryParamsResponse)(nil), "dongtramcam.dongtramcam.QueryParamsResponse")
 }
 
-func init() { proto.RegisterFile("dongtramcam/query.proto", fileDescriptor_0f26f46a97e6e8ad) }
+func init() { proto.RegisterFile("github.com/DongCoNY/research-cosmos/query.proto", fileDescriptor_0f26f46a97e6e8ad) }
 
 var fileDescriptor_0f26f46a97e6e8ad = []byte{
 	// 284 bytes of a gzipped FileDescriptorProto
@@ -221,7 +221,7 @@ var _Query_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "dongtramcam/query.proto",
+	Metadata: "github.com/DongCoNY/research-cosmos/query.proto",
 }
 
 func (m *QueryParamsRequest) Marshal() (dAtA []byte, err error) {

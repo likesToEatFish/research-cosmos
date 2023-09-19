@@ -3,10 +3,10 @@ package dongtramcam_test
 import (
 	"testing"
 
-	keepertest "dongtramcam/testutil/keeper"
-	"dongtramcam/testutil/nullify"
-	"dongtramcam/x/dongtramcam"
-	"dongtramcam/x/dongtramcam/types"
+	keepertest "github.com/DongCoNY/research-cosmos/testutil/keeper"
+	"github.com/DongCoNY/research-cosmos/testutil/nullify"
+	"github.com/DongCoNY/research-cosmos/x/dongtramcam"
+	"github.com/DongCoNY/research-cosmos/x/dongtramcam/types"
 	"github.com/stretchr/testify/require"
 )
 

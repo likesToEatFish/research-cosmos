@@ -3,7 +3,7 @@ package types_test
 import (
 	"testing"
 
-	"dongtramcam/x/dongtramcam/types"
+	"github.com/DongCoNY/research-cosmos/x/dongtramcam/types"
 	"github.com/stretchr/testify/require"
 )
 

@@ -72,7 +72,7 @@ func init() {
 	proto.RegisterType((*GenesisState)(nil), "dongtramcam.dongtramcam.GenesisState")
 }
 
-func init() { proto.RegisterFile("dongtramcam/genesis.proto", fileDescriptor_b9a678636ddc6e75) }
+func init() { proto.RegisterFile("github.com/DongCoNY/research-cosmos/genesis.proto", fileDescriptor_b9a678636ddc6e75) }
 
 var fileDescriptor_b9a678636ddc6e75 = []byte{
 	// 171 bytes of a gzipped FileDescriptorProto

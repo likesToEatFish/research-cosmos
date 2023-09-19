@@ -3,9 +3,9 @@ package main
 import (
 	"os"
 
-	"dongtramcam/app"
+	"github.com/DongCoNY/research-cosmos/app"
 
-	"dongtramcam/cmd/dongtramcamd/cmd"
+	"github.com/DongCoNY/research-cosmos/cmd/dongtramcamd/cmd"
 
 	svrcmd "github.com/cosmos/cosmos-sdk/server/cmd"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"

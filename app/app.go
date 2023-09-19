@@ -104,11 +104,11 @@ import (
 	"github.com/ignite/cli/ignite/pkg/cosmoscmd"
 	"github.com/ignite/cli/ignite/pkg/openapiconsole"
 
-	"dongtramcam/docs"
+	"github.com/DongCoNY/research-cosmos/docs"
 
-	dongtramcammodule "dongtramcam/x/dongtramcam"
-	dongtramcammodulekeeper "dongtramcam/x/dongtramcam/keeper"
-	dongtramcammoduletypes "dongtramcam/x/dongtramcam/types"
+	dongtramcammodule "github.com/DongCoNY/research-cosmos/x/dongtramcam"
+	dongtramcammodulekeeper "github.com/DongCoNY/research-cosmos/x/dongtramcam/keeper"
+	dongtramcammoduletypes "github.com/DongCoNY/research-cosmos/x/dongtramcam/types"
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 )
 

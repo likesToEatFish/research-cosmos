@@ -1,8 +1,8 @@
 package dongtramcam
 
 import (
-	"dongtramcam/x/dongtramcam/keeper"
-	"dongtramcam/x/dongtramcam/types"
+	"github.com/DongCoNY/research-cosmos/x/dongtramcam/keeper"
+	"github.com/DongCoNY/research-cosmos/x/dongtramcam/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )
 

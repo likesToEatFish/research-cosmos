@@ -3,7 +3,7 @@ package keeper
 import (
 	"fmt"
 
-	"dongtramcam/x/dongtramcam/types"
+	"github.com/DongCoNY/research-cosmos/x/dongtramcam/types"
 	"github.com/cosmos/cosmos-sdk/codec"
 	storetypes "github.com/cosmos/cosmos-sdk/store/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"

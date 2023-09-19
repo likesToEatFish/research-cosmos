@@ -1,7 +1,7 @@
 package keeper
 
 import (
-	"dongtramcam/x/dongtramcam/types"
+	"github.com/DongCoNY/research-cosmos/x/dongtramcam/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )
 

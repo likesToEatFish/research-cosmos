@@ -1,0 +1,26 @@
+syntax = "proto3";
+package auction.v1;
+
+import "gogoproto/gogo.proto";
+import "cosmos/base/v1beta1/coin.proto";
+import "google/api/annotations.proto";
+
+option go_package = "github.com/DongCoNY/research-cosmos/x/auction/types";
+
+// Msg defines the state transitions possible within auction
+service Msg {
+    rpc Bid(MsgBid) returns (MsgBidResponse) {
+        option (google.api.http).post = "/auction/v1/bid";
+    }
+}
+
+// MsgBid is a message type for placing a bid on an auction
+message MsgBid {
+    uint64 auction_id = 1 [(gogoproto.customname) = "AuctionId"]; // ID of the auction to bid on
+    string bidder = 2 [(gogoproto.customname) = "Bidder"]; // Address of the bidder
+    cosmos.base.v1beta1.Coin amount = 3 [(gogoproto.customname) = "Amount"]; // Amount of the bid
+}
+  
+message MsgBidResponse {
+    bool success = 1;
+}

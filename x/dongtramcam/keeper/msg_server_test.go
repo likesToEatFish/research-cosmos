@@ -4,9 +4,9 @@ import (
 	"context"
 	"testing"
 
-	keepertest "dongtramcam/testutil/keeper"
-	"dongtramcam/x/dongtramcam/keeper"
-	"dongtramcam/x/dongtramcam/types"
+	keepertest "github.com/DongCoNY/research-cosmos/testutil/keeper"
+	"github.com/DongCoNY/research-cosmos/x/dongtramcam/keeper"
+	"github.com/DongCoNY/research-cosmos/x/dongtramcam/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )
 

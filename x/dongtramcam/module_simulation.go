@@ -3,9 +3,9 @@ package dongtramcam
 import (
 	"math/rand"
 
-	"dongtramcam/testutil/sample"
-	dongtramcamsimulation "dongtramcam/x/dongtramcam/simulation"
-	"dongtramcam/x/dongtramcam/types"
+	"github.com/DongCoNY/research-cosmos/testutil/sample"
+	dongtramcamsimulation "github.com/DongCoNY/research-cosmos/x/dongtramcam/simulation"
+	"github.com/DongCoNY/research-cosmos/x/dongtramcam/types"
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	simappparams "github.com/cosmos/cosmos-sdk/simapp/params"
 	sdk "github.com/cosmos/cosmos-sdk/types"

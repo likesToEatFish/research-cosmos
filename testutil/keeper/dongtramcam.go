@@ -3,8 +3,8 @@ package keeper
 import (
 	"testing"
 
-	"dongtramcam/x/dongtramcam/keeper"
-	"dongtramcam/x/dongtramcam/types"
+	"github.com/DongCoNY/research-cosmos/x/dongtramcam/keeper"
+	"github.com/DongCoNY/research-cosmos/x/dongtramcam/types"
 	"github.com/cosmos/cosmos-sdk/codec"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
 	"github.com/cosmos/cosmos-sdk/store"

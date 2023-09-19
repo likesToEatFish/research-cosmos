@@ -2,10 +2,10 @@ syntax = "proto3";
 package dongtramcam.dongtramcam;
 
 import "gogoproto/gogo.proto";
-import "dongtramcam/params.proto";
+import "github.com/DongCoNY/research-cosmos/params.proto";
 // this line is used by starport scaffolding # genesis/proto/import
 
-option go_package = "dongtramcam/x/dongtramcam/types";
+option go_package = "github.com/DongCoNY/research-cosmos/x/dongtramcam/types";
 
 // GenesisState defines the dongtramcam module's genesis state.
 message GenesisState {

@@ -3,7 +3,7 @@ package dongtramcam.dongtramcam;
 
 import "gogoproto/gogo.proto";
 
-option go_package = "dongtramcam/x/dongtramcam/types";
+option go_package = "github.com/DongCoNY/research-cosmos/x/dongtramcam/types";
 
 // Params defines the parameters for the module.
 message Params {

@@ -3,7 +3,7 @@ package dongtramcam.dongtramcam;
 
 // this line is used by starport scaffolding # proto/tx/import
 
-option go_package = "dongtramcam/x/dongtramcam/types";
+option go_package = "github.com/DongCoNY/research-cosmos/x/dongtramcam/types";
 
 // Msg defines the Msg service.
 service Msg {
