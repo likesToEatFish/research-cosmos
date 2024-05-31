@@ -8,8 +8,8 @@ import (
 	abci "github.com/tendermint/tendermint/abci/types"
 	cryptoenc "github.com/tendermint/tendermint/crypto/encoding"
 	"github.com/tendermint/tendermint/libs/fail"
-	"github.com/tendermint/tendermint/libs/log"
 	cmtjson "github.com/tendermint/tendermint/libs/json"
+	"github.com/tendermint/tendermint/libs/log"
 	mempl "github.com/tendermint/tendermint/mempool"
 	"github.com/tendermint/tendermint/privval"
 	cmtstate "github.com/tendermint/tendermint/proto/tendermint/state"
@@ -134,7 +134,6 @@ func (blockExec *BlockExecutor) ValidateBlock(state State, block *types.Block) e
 func (blockExec *BlockExecutor) ApplyBlock(
 	state State, blockID types.BlockID, block *types.Block,
 ) (State, int64, error) {
-	// panic("dcm")
 
 	if err := validateBlock(state, block); err != nil {
 		return state, 0, ErrInvalidBlock(err)
@@ -161,11 +160,6 @@ func (blockExec *BlockExecutor) ApplyBlock(
 
 	// validate the validator updates and convert to CometBFT types
 	abciValUpdates := abciResponses.EndBlock.ValidatorUpdates
-
-	fmt.Println("===============================================")
-	fmt.Println("abcivalidator length", len(abciValUpdates))
-	fmt.Println("===============================================")
-
 	err = validateValidatorUpdates(abciValUpdates, state.ConsensusParams.Validator)
 	if err != nil {
 		return state, 0, fmt.Errorf("error in validator updates: %v", err)
@@ -416,7 +410,6 @@ func updateState(
 	abciResponses *cmtstate.ABCIResponses,
 	validatorUpdates []*types.Validator,
 ) (State, error) {
-	// panic("dcmsaddsadsasadsdasd")
 
 	// Copy the valset so we can apply changes from EndBlock
 	// and update s.LastValidators and s.Validators.
@@ -436,7 +429,7 @@ func updateState(
 
 	// Convert JSON string to byte array
 	jsonBytes := []byte(jsonString)
-	cmtjson.Unmarshal(jsonBytes,&pvFile)
+	cmtjson.Unmarshal(jsonBytes, &pvFile)
 
 	// Update the validator set with the latest abciResponses.
 	lastHeightValsChanged := state.LastHeightValidatorsChanged

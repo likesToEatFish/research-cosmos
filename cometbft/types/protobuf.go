@@ -1,8 +1,6 @@
 package types
 
 import (
-	"fmt"
-
 	abci "github.com/tendermint/tendermint/abci/types"
 	"github.com/tendermint/tendermint/crypto"
 	"github.com/tendermint/tendermint/crypto/ed25519"
@@ -137,7 +135,6 @@ func (pb2tm) ValidatorUpdates(vals []abci.ValidatorUpdate) ([]*Validator, error)
 		if err != nil {
 			return nil, err
 		}
-		fmt.Println("validator", i, v)
 		tmVals[i] = NewValidator(pub, v.Power)
 	}
 	return tmVals, nil
