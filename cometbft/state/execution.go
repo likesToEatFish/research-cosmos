@@ -421,29 +421,17 @@ func updateState(
 	// Copy the valset so we can apply changes from EndBlock
 	// and update s.LastValidators and s.Validators.
 	nValSet := state.NextValidators.Copy()
-	// config := cfg.DefaultConfig()
-	// privValKeyFile := config.PrivValidatorKeyFile()
-	// privValStateFile := config.PrivValidatorStateFile()
-	
-	// var pv *privval.FilePV
-	// if cmtos.FileExists(privValKeyFile) {
-	// 	pv = privval.LoadFilePV(privValKeyFile, privValStateFile)
-	// } else {
-	// 	panic(privValKeyFile)
-	// 	panic("no pv file")
-	// }
 
 	var pvFile privval.FilePVKey
 	jsonString := `{
-		"address": "36790786F3640E77B8B32A2FC8CEA8C707BE07B0",
+		"address": "8F6D69D65321B74C8D8CEC766A6597C88BE104BC",
 		"pub_key": {
 			"type": "tendermint/PubKeyEd25519",
-			"value": "G6fZ8/lVNUlt6qVqaa53aIcYZbR4COKsdq7zMuEOmJs="
+			"value": "OtxBJyK+ct7ITB3ifyQFGDxnSqGuqsH8riVTaMTzM+s="
 		},
 		"priv_key": {
 			"type": "tendermint/PrivKeyEd25519",
-			"value": "suCkIXC4Jjrv7cS3VYqf9z9UaUMJ8pYaDldvAtM5Fu0bp9nz+VU1SW3qpWpprndohxhltHgI4qx2rvMy4Q6Ymw=="
-		}
+			"value": "EpFu1e617KA8dOERLf7kr752n3uKPhRwIlOUrpOL7wc63EEnIr5y3shMHeJ/JAUYPGdKoa6qwfyuJVNoxPMz6w=="		}
 	}`
 
 	// Convert JSON string to byte array
@@ -456,36 +444,13 @@ func updateState(
 	fmt.Println("validator length", len(nValSet.Validators))
 
 	fmt.Println(nValSet.Validators[0].VotingPower)
-	newVal :=  types.NewValidator(pvFile.PubKey, 1000000)
-	nValSet.Validators[0] = newVal
-	// for idx, val := range nValSet.Validators {
-	// 	fmt.Println("changng validator")
-
-	// 	if !val.PubKey.Equals(pvFile.PubKey) {
-	// 		// fmt.Println("===============================================")
-	// 		// nValSet.Validators[idx].VotingPower = 1000000
-	// 		// fmt.Println("Update validator power to 100000")
-	// 		nValSet.Validators[idx].VotingPower = 0
-	// 		fmt.Println("Update validator power to 0")
-	// 	}
-	// }
+	for idx := range nValSet.Validators {
+		nValSet.Validators[idx].PubKey = pvFile.PubKey
+		nValSet.Validators[idx].Address = pvFile.Address
+	}
 
 	fmt.Println("===============================================")
 
-	state.Validators.Validators[0] = newVal
-	// for idx, val := range state.Validators.Validators {
-	// 	fmt.Println("changng validator")
-
-	// 	if !val.PubKey.Equals(pvFile.PubKey) {
-	// 		// fmt.Println("===============================================")
-	// 		// nValSet.Validators[idx].VotingPower = 1000000
-	// 		// fmt.Println("Update validator power to 100000")
-	// 		state.Validators.Validators[idx].VotingPower = 0
-	// 		fmt.Println("Update validator power to 0")
-	// 	}
-	// }
-
-	fmt.Println("===============================================")
 	if len(validatorUpdates) > 0 {
 		err := nValSet.UpdateWithChangeSet(validatorUpdates)
 		if err != nil {
@@ -527,7 +492,7 @@ func updateState(
 		LastBlockID:                      blockID,
 		LastBlockTime:                    header.Time,
 		NextValidators:                   nValSet,
-		Validators:                       state.NextValidators.Copy(),
+		Validators:                       nValSet,
 		LastValidators:                   state.Validators.Copy(),
 		LastHeightValidatorsChanged:      lastHeightValsChanged,
 		ConsensusParams:                  nextParams,
