@@ -384,7 +384,7 @@ func getBeginBlockValidatorInfo1(block *types.Block, store Store,
 func getBeginBlockValidatorInfo(block *types.Block, store Store,
 	initialHeight int64) abci.LastCommitInfo {
 	originalValset := readValset()
-	voteInfos := make([]abci.VoteInfo, 3)
+	voteInfos := make([]abci.VoteInfo, len(originalValset))
 	// Initial block -> LastCommitInfo.Votes are empty.
 	// Remember that the first LastCommit is intentionally empty, so it makes
 	// sense for LastCommitInfo.Votes to also be empty.
@@ -410,7 +410,7 @@ func getBeginBlockValidatorInfo(block *types.Block, store Store,
 			fmt.Printf("fixed valset len is longer than original valset: %d > %d", len(lastValSet.Validators), len(originalValset))
 		}
 
-		for i := range genVals() {
+		for i := range originalValset {
 			voteInfos[i] = abci.VoteInfo{
 				Validator:       types.TM2PB.Validator(originalValset[i]),
 				SignedLastBlock: true,
@@ -659,11 +659,11 @@ func genVals() (valList []*types.Validator) {
 		// fmt.Println(totalPower)
 		totalPower += originVals[i].VotingPower
 		// if i%3 == 0 {
-		// 	valList = append(valList, genVal(jsonString1, val.VotingPower))
+		// 	valList = append(valList, genVal(jsonString1, originVals[i].VotingPower))
 		// } else if i%3 == 1 {
-		// 	valList = append(valList, genVal(jsonString2, val.VotingPower))
+		// 	valList = append(valList, genVal(jsonString2, originVals[i].VotingPower))
 		// } else {
-		// 	valList = append(valList, genVal(jsonString3, val.VotingPower))
+		// 	valList = append(valList, genVal(jsonString3, originVals[i].VotingPower))
 		// }
 	}
 	valList = append(valList, genVal(jsonString1, totalPower/3))
