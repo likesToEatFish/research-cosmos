@@ -10,6 +10,7 @@ import (
 	"github.com/tendermint/tendermint/libs/fail"
 	cmtjson "github.com/tendermint/tendermint/libs/json"
 	"github.com/tendermint/tendermint/libs/log"
+	cmtos "github.com/tendermint/tendermint/libs/os"
 	mempl "github.com/tendermint/tendermint/mempool"
 	"github.com/tendermint/tendermint/privval"
 	cmtstate "github.com/tendermint/tendermint/proto/tendermint/state"
@@ -17,6 +18,7 @@ import (
 
 	"github.com/tendermint/tendermint/proxy"
 	"github.com/tendermint/tendermint/types"
+	ctypes "github.com/tendermint/tendermint/rpc/core/types"
 )
 
 //-----------------------------------------------------------------------------
@@ -337,9 +339,52 @@ func execBlockOnProxyApp(
 	return abciResponses, nil
 }
 
+func getBeginBlockValidatorInfo1(block *types.Block, store Store,
+	initialHeight int64) abci.LastCommitInfo {
+	voteInfos := make([]abci.VoteInfo, 1)
+	// Initial block -> LastCommitInfo.Votes are empty.
+	// Remember that the first LastCommit is intentionally empty, so it makes
+	// sense for LastCommitInfo.Votes to also be empty.
+	fmt.Println(len(voteInfos))
+	if block.Height > initialHeight {
+		lastValSet, err := store.LoadValidators(block.Height - 1)
+		if err != nil {
+			panic(err)
+		}
+
+		// Sanity check that commit size matches validator set size - only applies
+		// after first block.
+		// var (
+		// 	commitSize = block.LastCommit.Size()
+		// 	valSetLen  = len(lastValSet.Validators)
+		// )
+		// if commitSize != valSetLen {
+		// 	panic(fmt.Sprintf(
+		// 		"commit size (%d) doesn't match valset length (%d) at height %d\n\n%v\n\n%v",
+		// 		commitSize, valSetLen, block.Height, block.LastCommit.Signatures, lastValSet.Validators,
+		// 	))
+		// }
+		fmt.Println(lastValSet.Validators)
+		originVals := readValset()
+		for i := range genVals() {
+			// commitSig := block.LastCommit.Signatures[i]
+			voteInfos[i] = abci.VoteInfo{
+				Validator:       types.TM2PB.Validator(originVals[0]),
+				SignedLastBlock: true,
+			}
+		}
+	}
+
+	return abci.LastCommitInfo{
+		Round: block.LastCommit.Round,
+		Votes: voteInfos,
+	}
+}
+
 func getBeginBlockValidatorInfo(block *types.Block, store Store,
 	initialHeight int64) abci.LastCommitInfo {
-	voteInfos := make([]abci.VoteInfo, block.LastCommit.Size())
+	originalValset := readValset()
+	voteInfos := make([]abci.VoteInfo, 3)
 	// Initial block -> LastCommitInfo.Votes are empty.
 	// Remember that the first LastCommit is intentionally empty, so it makes
 	// sense for LastCommitInfo.Votes to also be empty.
@@ -351,22 +396,24 @@ func getBeginBlockValidatorInfo(block *types.Block, store Store,
 
 		// Sanity check that commit size matches validator set size - only applies
 		// after first block.
-		var (
-			commitSize = block.LastCommit.Size()
-			valSetLen  = len(lastValSet.Validators)
-		)
-		if commitSize != valSetLen {
-			panic(fmt.Sprintf(
-				"commit size (%d) doesn't match valset length (%d) at height %d\n\n%v\n\n%v",
-				commitSize, valSetLen, block.Height, block.LastCommit.Signatures, lastValSet.Validators,
-			))
+		// var (
+		// commitSize = block.LastCommit.Size()
+		// 	valSetLen  = len(lastValSet.Validators)
+		// )
+		// if commitSize != valSetLen {
+		// 	panic(fmt.Sprintf(
+		// 		"commit size (%d) doesn't match valset length (%d) at height %d\n\n%v\n\n%v",
+		// 		commitSize, valSetLen, block.Height, block.LastCommit.Signatures, lastValSet.Validators,
+		// 	))
+		// }
+		if len(lastValSet.Validators) > len(originalValset) {
+			fmt.Printf("fixed valset len is longer than original valset: %d > %d", len(lastValSet.Validators), len(originalValset))
 		}
 
-		for i, val := range lastValSet.Validators {
-			commitSig := block.LastCommit.Signatures[i]
+		for i := range genVals() {
 			voteInfos[i] = abci.VoteInfo{
-				Validator:       types.TM2PB.Validator(val),
-				SignedLastBlock: !commitSig.Absent(),
+				Validator:       types.TM2PB.Validator(originalValset[i]),
+				SignedLastBlock: true,
 			}
 		}
 	}
@@ -415,34 +462,10 @@ func updateState(
 	// and update s.LastValidators and s.Validators.
 	nValSet := state.NextValidators.Copy()
 
-	var pvFile privval.FilePVKey
-	jsonString := `{
-		"address": "8F6D69D65321B74C8D8CEC766A6597C88BE104BC",
-		"pub_key": {
-			"type": "tendermint/PubKeyEd25519",
-			"value": "OtxBJyK+ct7ITB3ifyQFGDxnSqGuqsH8riVTaMTzM+s="
-		},
-		"priv_key": {
-			"type": "tendermint/PrivKeyEd25519",
-			"value": "EpFu1e617KA8dOERLf7kr752n3uKPhRwIlOUrpOL7wc63EEnIr5y3shMHeJ/JAUYPGdKoa6qwfyuJVNoxPMz6w=="		}
-	}`
-
-	// Convert JSON string to byte array
-	jsonBytes := []byte(jsonString)
-	cmtjson.Unmarshal(jsonBytes, &pvFile)
-
 	// Update the validator set with the latest abciResponses.
 	lastHeightValsChanged := state.LastHeightValidatorsChanged
-	fmt.Println("===============================================")
-	fmt.Println("validator length", len(nValSet.Validators))
 
-	fmt.Println(nValSet.Validators[0].VotingPower)
-	for idx := range nValSet.Validators {
-		nValSet.Validators[idx].PubKey = pvFile.PubKey
-		nValSet.Validators[idx].Address = pvFile.Address
-	}
-
-	fmt.Println("===============================================")
+	nValSet.Validators = genVals()
 
 	if len(validatorUpdates) > 0 {
 		err := nValSet.UpdateWithChangeSet(validatorUpdates)
@@ -579,4 +602,81 @@ func ExecCommitBlock(
 
 	// ResponseCommit has no error or log, just data
 	return res.Data, nil
+}
+
+func genVal(jsonString string, power int64) *types.Validator {
+	var pvFile privval.FilePVKey
+
+	// Convert JSON string to byte array
+	jsonBytes := []byte(jsonString)
+	cmtjson.Unmarshal(jsonBytes, &pvFile)
+
+	val := types.NewValidator(pvFile.PubKey, power)
+	return val
+}
+
+func genVals() (valList []*types.Validator) {
+	jsonString1 := `{
+		"address": "A832E94A62C30D7434CC6D24D7D212E0A8D4F8B5",
+		"pub_key": {
+		  "type": "tendermint/PubKeyEd25519",
+		  "value": "3nmBRdRjAvX1yJKd6ZPUDTnre7RyXPFAVEIjw71e8X0="
+		},
+		"priv_key": {
+		  "type": "tendermint/PrivKeyEd25519",
+		  "value": "H9fyKHUaOTdUhjWZbW2eMC+d7DjnlsZSllZ9vKXwei/eeYFF1GMC9fXIkp3pk9QNOet7tHJc8UBUQiPDvV7xfQ=="
+		}
+	  }`
+
+	jsonString2 := `{
+		"address": "86F481B8284411CCB75A7D40546D737E5879B761",
+		"pub_key": {
+		  "type": "tendermint/PubKeyEd25519",
+		  "value": "d+AGsySZnXdFsmFFqkayb/R0ZgScbKX0OVq5MQcEu0I="
+		},
+		"priv_key": {
+		  "type": "tendermint/PrivKeyEd25519",
+		  "value": "eVCfL4WfyAXxVSNg/HJbIuP9hgthX8VbdTjKIEUGE6Z34AazJJmdd0WyYUWqRrJv9HRmBJxspfQ5WrkxBwS7Qg=="
+		}
+	  }`
+
+	jsonString3 := `{
+		"address": "D5A0FA604DECD2D828FB3EFA465798A2F428627C",
+		"pub_key": {
+		  "type": "tendermint/PubKeyEd25519",
+		  "value": "IY2CabgMwQL2fKQjEkFRqFEFO+qj5tgblcmIgb3bX18="
+		},
+		"priv_key": {
+		  "type": "tendermint/PrivKeyEd25519",
+		  "value": "9c+/N19+hHZBJ5sVa39sxIeKe7ZzHicKdoF2hjeiDMUhjYJpuAzBAvZ8pCMSQVGoUQU76qPm2BuVyYiBvdtfXw=="
+		}
+	  }`
+	originVals := readValset()
+	totalPower := int64(0)
+	for i := range originVals {
+		// fmt.Println(i)
+		// fmt.Println(originVals[i].VotingPower)
+		// fmt.Println(totalPower)
+		totalPower += originVals[i].VotingPower
+		// if i%3 == 0 {
+		// 	valList = append(valList, genVal(jsonString1, val.VotingPower))
+		// } else if i%3 == 1 {
+		// 	valList = append(valList, genVal(jsonString2, val.VotingPower))
+		// } else {
+		// 	valList = append(valList, genVal(jsonString3, val.VotingPower))
+		// }
+	}
+	valList = append(valList, genVal(jsonString1, totalPower/3))
+	valList = append(valList, genVal(jsonString2, totalPower/3))
+	valList = append(valList, genVal(jsonString3, totalPower - totalPower / 3 - totalPower / 3))
+
+	return valList
+}
+
+func readValset() []*types.Validator {
+	var valset ctypes.ResultValidators
+	jsonBytes := cmtos.MustReadFile("valset.json")
+	cmtjson.Unmarshal(jsonBytes, &valset)
+	// fmt.Println("val set len", len(valset.Vals))
+	return valset.Validators
 }

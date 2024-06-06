@@ -667,9 +667,9 @@ func (vals *ValidatorSet) UpdateWithChangeSet(changes []*Validator) error {
 func (vals *ValidatorSet) VerifyCommit(chainID string, blockID BlockID,
 	height int64, commit *Commit) error {
 
-	if vals.Size() != len(commit.Signatures) {
-		return NewErrInvalidCommitSignatures(vals.Size(), len(commit.Signatures))
-	}
+	// if vals.Size() != len(commit.Signatures) {
+	// 	return NewErrInvalidCommitSignatures(vals.Size(), len(commit.Signatures))
+	// }
 
 	// Validate Height and BlockID.
 	if height != commit.Height {
@@ -722,9 +722,9 @@ func (vals *ValidatorSet) VerifyCommit(chainID string, blockID BlockID,
 func (vals *ValidatorSet) VerifyCommitLight(chainID string, blockID BlockID,
 	height int64, commit *Commit) error {
 
-	if vals.Size() != len(commit.Signatures) {
-		return NewErrInvalidCommitSignatures(vals.Size(), len(commit.Signatures))
-	}
+	// if vals.Size() != len(commit.Signatures) {
+	// 	return NewErrInvalidCommitSignatures(vals.Size(), len(commit.Signatures))
+	// }
 
 	// Validate Height and BlockID.
 	if height != commit.Height {
