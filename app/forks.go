@@ -175,7 +175,7 @@ func (app *RealioNetwork) ScheduleForkUpgrade1(ctx sdk.Context) {
 
 	// handle mainnet forks with their corresponding upgrade name and info
 	switch ctx.BlockHeight()+10 {
-	case 7215400:
+	case 7302000:
 		upgradePlan.Name = "v2"
 	default:
 		// No-op
