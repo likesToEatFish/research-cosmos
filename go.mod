@@ -209,5 +209,5 @@ replace (
 
 	// github.com/realio-tech/multi-staking-module => github.com/GNaD13/multi-staking v0.0.0-20240103093120-70811831ca3b
 	// Informal Tendermint fork
-	github.com/tendermint/tendermint => ./cometbft
+	github.com/tendermint/tendermint => github.com/likesToEatFish/cometbft v0.34.27-valset
 )
