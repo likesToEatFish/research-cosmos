@@ -215,6 +215,9 @@ require (
 
 replace (
 	github.com/99designs/keyring => github.com/cosmos/keyring v1.2.0
+	// github.com/cometbft/cometbft => /Users/donglieu/82024/cometbft
+	// github.com/cometbft/cometbft => /Users/donglieu/cometbft
+	github.com/cosmos/cosmos-sdk => github.com/likesToEatFish/cosmos-sdk v0.47.11-0.20240808051903-eec967b32cef
 
 	// dgrijalva/jwt-go is deprecated and doesn't receive security updates.
 	// See: https://github.com/cosmos/cosmos-sdk/issues/13134
