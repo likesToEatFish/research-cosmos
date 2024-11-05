@@ -1,0 +1,17 @@
+syntax = "proto3";
+package mock.mock.v1;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+import "mock/mock/v1/params.proto";
+
+option go_package = "github.com/test/mock/x/mock/types";
+
+// GenesisState defines the mock module's genesis state.
+message GenesisState {
+  // params defines all the parameters of the module.
+  Params params = 1 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}

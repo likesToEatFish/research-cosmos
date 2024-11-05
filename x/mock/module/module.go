@@ -1,0 +1,216 @@
+package mock
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+
+	"cosmossdk.io/core/address"
+	"cosmossdk.io/core/appmodule"
+	"cosmossdk.io/core/registry"
+	"cosmossdk.io/core/store"
+	"cosmossdk.io/depinject"
+	"cosmossdk.io/depinject/appconfig"
+	"cosmossdk.io/log"
+	govtypes "cosmossdk.io/x/gov/types"
+	"github.com/cosmos/cosmos-sdk/client"
+	"github.com/cosmos/cosmos-sdk/codec"
+	"github.com/cosmos/cosmos-sdk/types/module"
+	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
+	"github.com/grpc-ecosystem/grpc-gateway/runtime"
+	"google.golang.org/grpc"
+
+	// this line is used by starport scaffolding # 1
+
+	"github.com/test/mock/x/mock/keeper"
+	"github.com/test/mock/x/mock/types"
+)
+
+var (
+	_ module.AppModuleSimulation = (*AppModule)(nil)
+
+	_ appmodule.HasGenesis          = (*AppModule)(nil)
+	_ appmodule.HasConsensusVersion = (*AppModule)(nil)
+	_ appmodule.AppModule           = (*AppModule)(nil)
+	_ appmodule.HasBeginBlocker     = (*AppModule)(nil)
+	_ appmodule.HasEndBlocker       = (*AppModule)(nil)
+)
+
+// ----------------------------------------------------------------------------
+// AppModuleBasic
+// ----------------------------------------------------------------------------
+
+// AppModuleBasic implements the AppModuleBasic interface that defines the
+// independent methods a Cosmos SDK module needs to implement.
+type AppModuleBasic struct {
+	cdc codec.Codec
+}
+
+func NewAppModuleBasic(cdc codec.Codec) AppModuleBasic {
+	return AppModuleBasic{cdc: cdc}
+}
+
+// Name returns the name of the module as a string.
+func (AppModuleBasic) Name() string {
+	return types.ModuleName
+}
+
+// RegisterInterfaces registers a module's interface types and their concrete implementations as proto.Message.
+func (a AppModuleBasic) RegisterInterfaces(registrar registry.InterfaceRegistrar) {
+	types.RegisterInterfaces(registrar)
+}
+
+// DefaultGenesis returns a default GenesisState for the module, marshalled to json.RawMessage.
+// The default GenesisState need to be defined by the module developer and is primarily used for testing.
+func (am AppModuleBasic) DefaultGenesis() json.RawMessage {
+	return am.cdc.MustMarshalJSON(types.DefaultGenesis())
+}
+
+// ValidateGenesis used to validate the GenesisState, given in its json.RawMessage form.
+func (am AppModuleBasic) ValidateGenesis(bz json.RawMessage) error {
+	var genState types.GenesisState
+	if err := am.cdc.UnmarshalJSON(bz, &genState); err != nil {
+		return fmt.Errorf("failed to unmarshal %s genesis state: %w", types.ModuleName, err)
+	}
+	return genState.Validate()
+}
+
+// RegisterGRPCGatewayRoutes registers the gRPC Gateway routes for the module.
+func (AppModuleBasic) RegisterGRPCGatewayRoutes(clientCtx client.Context, mux *runtime.ServeMux) {
+	if err := types.RegisterQueryHandlerClient(context.Background(), mux, types.NewQueryClient(clientCtx)); err != nil {
+		panic(err)
+	}
+}
+
+// ----------------------------------------------------------------------------
+// AppModule
+// ----------------------------------------------------------------------------
+
+// AppModule implements the AppModule interface that defines the inter-dependent methods that modules need to implement
+type AppModule struct {
+	AppModuleBasic
+
+	keeper        keeper.Keeper
+	accountKeeper types.AccountKeeper
+	bankKeeper    types.BankKeeper
+}
+
+func NewAppModule(
+	cdc codec.Codec,
+	keeper keeper.Keeper,
+	accountKeeper types.AccountKeeper,
+	bankKeeper types.BankKeeper,
+) AppModule {
+	return AppModule{
+		AppModuleBasic: NewAppModuleBasic(cdc),
+		keeper:         keeper,
+		accountKeeper:  accountKeeper,
+		bankKeeper:     bankKeeper,
+	}
+}
+
+// RegisterServices registers a gRPC query service to respond to the module-specific gRPC queries
+func (am AppModule) RegisterServices(registrar grpc.ServiceRegistrar) error {
+	types.RegisterMsgServer(registrar, keeper.NewMsgServerImpl(am.keeper))
+	types.RegisterQueryServer(registrar, keeper.NewQueryServerImpl(am.keeper))
+
+	return nil
+}
+
+// InitGenesis performs the module's genesis initialization. It returns no validator updates.
+func (am AppModule) InitGenesis(ctx context.Context, gs json.RawMessage) error {
+	var genState types.GenesisState
+	// Initialize global index to index in genesis state
+	if err := am.cdc.UnmarshalJSON(gs, &genState); err != nil {
+		return fmt.Errorf("failed to unmarshal %s genesis state: %w", types.ModuleName, err)
+	}
+
+	return InitGenesis(ctx, am.keeper, genState)
+}
+
+// ExportGenesis returns the module's exported genesis state as raw JSON bytes.
+func (am AppModule) ExportGenesis(ctx context.Context) (json.RawMessage, error) {
+	genState, err := ExportGenesis(ctx, am.keeper)
+	if err != nil {
+		return nil, err
+	}
+
+	return am.cdc.MarshalJSON(genState)
+}
+
+// ConsensusVersion is a sequence number for state-breaking change of the module.
+// It should be incremented on each consensus-breaking change introduced by the module.
+// To avoid wrong/empty versions, the initial version should be set to 1.
+func (AppModule) ConsensusVersion() uint64 { return 1 }
+
+// BeginBlock contains the logic that is automatically triggered at the beginning of each block.
+// The begin block implementation is optional.
+func (am AppModule) BeginBlock(_ context.Context) error {
+	return nil
+}
+
+// EndBlock contains the logic that is automatically triggered at the end of each block.
+// The end block implementation is optional.
+func (am AppModule) EndBlock(_ context.Context) error {
+	return nil
+}
+
+// IsOnePerModuleType implements the depinject.OnePerModuleType interface.
+func (am AppModule) IsOnePerModuleType() {}
+
+// IsAppModule implements the appmodule.AppModule interface.
+func (am AppModule) IsAppModule() {}
+
+// ----------------------------------------------------------------------------
+// App Wiring Setup
+// ----------------------------------------------------------------------------
+
+func init() {
+	appconfig.Register(
+		&types.Module{},
+		appconfig.Provide(ProvideModule),
+	)
+}
+
+type ModuleInputs struct {
+	depinject.In
+
+	AddressCodec address.Codec
+	StoreService store.KVStoreService
+	Cdc          codec.Codec
+	Config       *types.Module
+	Logger       log.Logger
+
+	AccountKeeper types.AccountKeeper
+	BankKeeper    types.BankKeeper
+}
+
+type ModuleOutputs struct {
+	depinject.Out
+
+	MockKeeper keeper.Keeper
+	Module     appmodule.AppModule
+}
+
+func ProvideModule(in ModuleInputs) ModuleOutputs {
+	// default to governance authority if not provided
+	authority := authtypes.NewModuleAddress(govtypes.ModuleName)
+	if in.Config.Authority != "" {
+		authority = authtypes.NewModuleAddressOrBech32Address(in.Config.Authority)
+	}
+	k := keeper.NewKeeper(
+		in.Cdc,
+		in.AddressCodec,
+		in.StoreService,
+		in.Logger,
+		authority.String(),
+	)
+	m := NewAppModule(
+		in.Cdc,
+		k,
+		in.AccountKeeper,
+		in.BankKeeper,
+	)
+
+	return ModuleOutputs{MockKeeper: k, Module: m}
+}
