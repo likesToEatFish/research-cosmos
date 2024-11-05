@@ -3,8 +3,8 @@ package types_test
 import (
 	"testing"
 
+	"github.com/likesToEatFish/research-cosmos/x/mock/types"
 	"github.com/stretchr/testify/require"
-	"github.com/test/mock/x/mock/types"
 )
 
 func TestGenesisState_Validate(t *testing.T) {

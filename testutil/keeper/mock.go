@@ -18,8 +18,8 @@ import (
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	"github.com/stretchr/testify/require"
 
-	"github.com/test/mock/x/mock/keeper"
-	"github.com/test/mock/x/mock/types"
+	"github.com/likesToEatFish/research-cosmos/x/mock/keeper"
+	"github.com/likesToEatFish/research-cosmos/x/mock/types"
 )
 
 func MockKeeper(t testing.TB) (keeper.Keeper, sdk.Context, address.Codec) {

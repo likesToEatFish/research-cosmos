@@ -5,9 +5,9 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	keepertest "github.com/test/mock/testutil/keeper"
-	"github.com/test/mock/x/mock/keeper"
-	"github.com/test/mock/x/mock/types"
+	keepertest "github.com/likesToEatFish/research-cosmos/testutil/keeper"
+	"github.com/likesToEatFish/research-cosmos/x/mock/keeper"
+	"github.com/likesToEatFish/research-cosmos/x/mock/types"
 )
 
 func TestParamsQuery(t *testing.T) {

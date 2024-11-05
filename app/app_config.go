@@ -67,10 +67,10 @@ import (
 	"github.com/cosmos/cosmos-sdk/runtime"
 	_ "github.com/cosmos/cosmos-sdk/testutil/x/counter" // import for side-effects
 	genutiltypes "github.com/cosmos/cosmos-sdk/x/genutil/types"
-	_ "github.com/test/mock/x/mock/module"
+	_ "github.com/likesToEatFish/research-cosmos/x/mock/module"
 
 	// module account permissions
-	mockmoduletypes "github.com/test/mock/x/mock/types"
+	mockmoduletypes "github.com/likesToEatFish/research-cosmos/x/mock/types"
 )
 
 var (

@@ -7,8 +7,8 @@ import (
 	clienthelpers "cosmossdk.io/client/v2/helpers"
 	svrcmd "github.com/cosmos/cosmos-sdk/server/cmd"
 
-	"github.com/test/mock/app"
-	"github.com/test/mock/cmd/mockd/cmd"
+	"github.com/likesToEatFish/research-cosmos/app"
+	"github.com/likesToEatFish/research-cosmos/cmd/mockd/cmd"
 )
 
 func main() {

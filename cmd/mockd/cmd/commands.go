@@ -26,7 +26,7 @@ import (
 	genutilcli "github.com/cosmos/cosmos-sdk/x/genutil/client/cli"
 	genutiltypes "github.com/cosmos/cosmos-sdk/x/genutil/types"
 
-	"github.com/test/mock/app"
+	"github.com/likesToEatFish/research-cosmos/app"
 )
 
 func initRootCmd(

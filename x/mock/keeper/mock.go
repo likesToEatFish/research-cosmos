@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"cosmossdk.io/math"
-	// "github.com/test/mock/x/mock/types"
+	// "github.com/likesToEatFish/research-cosmos/x/mock/types"
 )
 
 func (k Keeper) AddNewSymbolToBandOracleRequest(ctx context.Context, symbol string, oracleScriptId int64) error {

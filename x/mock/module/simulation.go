@@ -8,9 +8,9 @@ import (
 	simtypes "github.com/cosmos/cosmos-sdk/types/simulation"
 	"github.com/cosmos/cosmos-sdk/x/simulation"
 
-	"github.com/test/mock/testutil/sample"
-	mocksimulation "github.com/test/mock/x/mock/simulation"
-	"github.com/test/mock/x/mock/types"
+	"github.com/likesToEatFish/research-cosmos/testutil/sample"
+	mocksimulation "github.com/likesToEatFish/research-cosmos/x/mock/simulation"
+	"github.com/likesToEatFish/research-cosmos/x/mock/types"
 )
 
 // avoid unused import issue

@@ -3,11 +3,11 @@ package mock_test
 import (
 	"testing"
 
+	keepertest "github.com/likesToEatFish/research-cosmos/testutil/keeper"
+	"github.com/likesToEatFish/research-cosmos/testutil/nullify"
+	mock "github.com/likesToEatFish/research-cosmos/x/mock/module"
+	"github.com/likesToEatFish/research-cosmos/x/mock/types"
 	"github.com/stretchr/testify/require"
-	keepertest "github.com/test/mock/testutil/keeper"
-	"github.com/test/mock/testutil/nullify"
-	mock "github.com/test/mock/x/mock/module"
-	"github.com/test/mock/x/mock/types"
 )
 
 func TestGenesis(t *testing.T) {

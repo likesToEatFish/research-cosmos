@@ -1,4 +1,4 @@
-module github.com/test/mock
+module github.com/likesToEatFish/research-cosmos
 
 go 1.23.1
 

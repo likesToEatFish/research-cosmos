@@ -12,7 +12,7 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/client/flags"
 
-	"github.com/test/mock/x/mock/types"
+	"github.com/likesToEatFish/research-cosmos/x/mock/types"
 )
 
 // GetTxCmd returns the transaction commands for this module.

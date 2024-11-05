@@ -7,7 +7,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/testutil/network"
 	"github.com/stretchr/testify/require"
 
-	"github.com/test/mock/app"
+	"github.com/likesToEatFish/research-cosmos/app"
 )
 
 // New creates instance with fully configured cosmos network.

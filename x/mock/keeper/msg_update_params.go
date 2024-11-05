@@ -5,7 +5,7 @@ import (
 
 	errorsmod "cosmossdk.io/errors"
 
-	"github.com/test/mock/x/mock/types"
+	"github.com/likesToEatFish/research-cosmos/x/mock/types"
 )
 
 func (k msgServer) UpdateParams(ctx context.Context, req *types.MsgUpdateParams) (*types.MsgUpdateParamsResponse, error) {

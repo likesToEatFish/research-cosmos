@@ -47,8 +47,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
 
-	"github.com/test/mock/docs"
-	mockmodulekeeper "github.com/test/mock/x/mock/keeper"
+	"github.com/likesToEatFish/research-cosmos/docs"
+	mockmodulekeeper "github.com/likesToEatFish/research-cosmos/x/mock/keeper"
 )
 
 const (

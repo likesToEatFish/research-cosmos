@@ -23,9 +23,9 @@ import (
 	"github.com/spf13/cobra"
 	// this line is used by starport scaffolding # 1
 
-	"github.com/test/mock/x/mock/cli"
-	"github.com/test/mock/x/mock/keeper"
-	"github.com/test/mock/x/mock/types"
+	"github.com/likesToEatFish/research-cosmos/x/mock/cli"
+	"github.com/likesToEatFish/research-cosmos/x/mock/keeper"
+	"github.com/likesToEatFish/research-cosmos/x/mock/types"
 )
 
 var (

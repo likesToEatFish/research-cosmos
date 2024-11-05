@@ -3,7 +3,7 @@ package mock
 import (
 	autocliv1 "cosmossdk.io/api/cosmos/autocli/v1"
 
-	"github.com/test/mock/x/mock/types"
+	"github.com/likesToEatFish/research-cosmos/x/mock/types"
 )
 
 // AutoCLIOptions implements the autocli.HasAutoCLIConfig interface.

@@ -11,7 +11,7 @@ import (
 	"cosmossdk.io/math"
 	"github.com/cosmos/cosmos-sdk/codec"
 
-	"github.com/test/mock/x/mock/types"
+	"github.com/likesToEatFish/research-cosmos/x/mock/types"
 )
 
 type (

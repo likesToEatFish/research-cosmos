@@ -3,8 +3,8 @@ package mock
 import (
 	"context"
 
-	"github.com/test/mock/x/mock/keeper"
-	"github.com/test/mock/x/mock/types"
+	"github.com/likesToEatFish/research-cosmos/x/mock/keeper"
+	"github.com/likesToEatFish/research-cosmos/x/mock/types"
 )
 
 // InitGenesis initializes the module's state from a provided genesis state.

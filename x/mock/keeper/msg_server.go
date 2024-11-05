@@ -1,7 +1,7 @@
 package keeper
 
 import (
-	"github.com/test/mock/x/mock/types"
+	"github.com/likesToEatFish/research-cosmos/x/mock/types"
 )
 
 type msgServer struct {
