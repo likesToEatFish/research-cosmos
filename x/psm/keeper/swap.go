@@ -8,8 +8,8 @@ import (
 
 	errors "cosmossdk.io/errors"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	oracletypes "github.com/onomyprotocol/reserve/x/oracle/types"
-	"github.com/onomyprotocol/reserve/x/psm/types"
+	oracletypes "github.com/likesToEatFish/research-cosmos/x/oracle/types"
+	"github.com/likesToEatFish/research-cosmos/x/psm/types"
 )
 
 // SwapToStablecoin return receiveAmount, fee, error

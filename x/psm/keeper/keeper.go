@@ -14,7 +14,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/onomyprotocol/reserve/x/psm/types"
+	"github.com/likesToEatFish/research-cosmos/x/psm/types"
 )
 
 type (

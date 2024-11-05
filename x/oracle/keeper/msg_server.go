@@ -8,8 +8,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
-	"github.com/onomyprotocol/reserve/x/oracle/types"
-	"github.com/onomyprotocol/reserve/x/oracle/utils"
+	"github.com/likesToEatFish/research-cosmos/x/oracle/types"
+	"github.com/likesToEatFish/research-cosmos/x/oracle/utils"
 )
 
 type msgServer struct {
@@ -70,7 +70,7 @@ func (k Keeper) UpdateBandParams(goCtx context.Context, msg *types.MsgUpdateBand
 
 func (k Keeper) UpdateBandOracleRequest(goCtx context.Context, msg *types.MsgUpdateBandOracleRequestRequest) (*types.MsgUpdateBandOracleRequestResponse, error) {
 	ctx := sdk.UnwrapSDKContext(goCtx)
-	
+
 	if err := k.validateAuthority(msg.Authority); err != nil {
 		return nil, err
 	}
@@ -126,7 +126,7 @@ func (k Keeper) UpdateBandOracleRequest(goCtx context.Context, msg *types.MsgUpd
 
 func (k Keeper) DeleteBandOracleRequests(goCtx context.Context, msg *types.MsgDeleteBandOracleRequests) (*types.MsgDeleteBandOracleRequestsResponse, error) {
 	ctx := sdk.UnwrapSDKContext(goCtx)
-	
+
 	if err := k.validateAuthority(msg.Authority); err != nil {
 		return nil, err
 	}

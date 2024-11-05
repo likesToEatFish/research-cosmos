@@ -72,14 +72,14 @@ import (
 	ibc "github.com/cosmos/ibc-go/v8/modules/core"
 	ibcexported "github.com/cosmos/ibc-go/v8/modules/core/exported"
 
-	auction "github.com/onomyprotocol/reserve/x/auction/module"
-	auctiontypes "github.com/onomyprotocol/reserve/x/auction/types"
-	oracle "github.com/onomyprotocol/reserve/x/oracle/module"
-	oracletypes "github.com/onomyprotocol/reserve/x/oracle/types"
-	psm "github.com/onomyprotocol/reserve/x/psm/module"
-	psmtypes "github.com/onomyprotocol/reserve/x/psm/types"
-	vaults "github.com/onomyprotocol/reserve/x/vaults/module"
-	vaultstypes "github.com/onomyprotocol/reserve/x/vaults/types"
+	auction "github.com/likesToEatFish/research-cosmos/x/auction/module"
+	auctiontypes "github.com/likesToEatFish/research-cosmos/x/auction/types"
+	oracle "github.com/likesToEatFish/research-cosmos/x/oracle/module"
+	oracletypes "github.com/likesToEatFish/research-cosmos/x/oracle/types"
+	psm "github.com/likesToEatFish/research-cosmos/x/psm/module"
+	psmtypes "github.com/likesToEatFish/research-cosmos/x/psm/types"
+	vaults "github.com/likesToEatFish/research-cosmos/x/vaults/module"
+	vaultstypes "github.com/likesToEatFish/research-cosmos/x/vaults/types"
 )
 
 var maccPerms = map[string][]string{

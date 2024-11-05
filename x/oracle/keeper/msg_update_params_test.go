@@ -6,7 +6,7 @@ package keeper_test
 // 	sdk "github.com/cosmos/cosmos-sdk/types"
 // 	"github.com/stretchr/testify/require"
 
-// 	"github.com/onomyprotocol/reserve/x/oracle/types"
+// 	"github.com/likesToEatFish/research-cosmos/x/oracle/types"
 // )
 
 // func TestMsgUpdateParams(t *testing.T) {

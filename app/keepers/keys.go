@@ -23,10 +23,10 @@ import (
 	ibctransfertypes "github.com/cosmos/ibc-go/v8/modules/apps/transfer/types"
 	ibcexported "github.com/cosmos/ibc-go/v8/modules/core/exported"
 
-	auctiontypes "github.com/onomyprotocol/reserve/x/auction/types"
-	oracletypes "github.com/onomyprotocol/reserve/x/oracle/types"
-	psmtypes "github.com/onomyprotocol/reserve/x/psm/types"
-	vaultstypes "github.com/onomyprotocol/reserve/x/vaults/types"
+	auctiontypes "github.com/likesToEatFish/research-cosmos/x/auction/types"
+	oracletypes "github.com/likesToEatFish/research-cosmos/x/oracle/types"
+	psmtypes "github.com/likesToEatFish/research-cosmos/x/psm/types"
+	vaultstypes "github.com/likesToEatFish/research-cosmos/x/vaults/types"
 )
 
 func (appKeepers *AppKeepers) GenerateKeys() {

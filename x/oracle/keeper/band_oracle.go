@@ -16,8 +16,8 @@ import (
 	channeltypes "github.com/cosmos/ibc-go/v8/modules/core/04-channel/types"
 	host "github.com/cosmos/ibc-go/v8/modules/core/24-host"
 
-	"github.com/onomyprotocol/reserve/x/oracle/types"
-	vaultstypes "github.com/onomyprotocol/reserve/x/vaults/types"
+	"github.com/likesToEatFish/research-cosmos/x/oracle/types"
+	vaultstypes "github.com/likesToEatFish/research-cosmos/x/vaults/types"
 )
 
 // SetBandParams sets the Band params in the state

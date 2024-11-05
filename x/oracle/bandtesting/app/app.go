@@ -104,10 +104,10 @@ import (
 	// unnamed import of statik for swagger UI support
 	// "github.com/cosmos/cosmos-sdk/client/docs/statik"
 
-	bandoracletypes "github.com/onomyprotocol/reserve/x/oracle/bandtesting/x/oracle/types"
+	bandoracletypes "github.com/likesToEatFish/research-cosmos/x/oracle/bandtesting/x/oracle/types"
 
-	"github.com/onomyprotocol/reserve/x/oracle/bandtesting/x/oracle"
-	oraclekeeper "github.com/onomyprotocol/reserve/x/oracle/bandtesting/x/oracle/keeper"
+	"github.com/likesToEatFish/research-cosmos/x/oracle/bandtesting/x/oracle"
+	oraclekeeper "github.com/likesToEatFish/research-cosmos/x/oracle/bandtesting/x/oracle/keeper"
 )
 
 const appName = "BandApp"

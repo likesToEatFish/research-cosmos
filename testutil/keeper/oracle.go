@@ -16,16 +16,16 @@ import (
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 	capabilitykeeper "github.com/cosmos/ibc-go/modules/capability/keeper"
-	portkeeper "github.com/cosmos/ibc-go/v8/modules/core/05-port/keeper"
 	channelkeeper "github.com/cosmos/ibc-go/v8/modules/core/04-channel/keeper"
+	portkeeper "github.com/cosmos/ibc-go/v8/modules/core/05-port/keeper"
 	ibcexported "github.com/cosmos/ibc-go/v8/modules/core/exported"
 	"github.com/stretchr/testify/require"
 
-	authkeeper "github.com/cosmos/cosmos-sdk/x/auth/keeper"
 	address "github.com/cosmos/cosmos-sdk/codec/address"
+	authkeeper "github.com/cosmos/cosmos-sdk/x/auth/keeper"
 
-	"github.com/onomyprotocol/reserve/x/oracle/keeper"
-	"github.com/onomyprotocol/reserve/x/oracle/types"
+	"github.com/likesToEatFish/research-cosmos/x/oracle/keeper"
+	"github.com/likesToEatFish/research-cosmos/x/oracle/types"
 )
 
 func OracleKeeper(t testing.TB) (keeper.Keeper, sdk.Context) {
@@ -46,13 +46,13 @@ func OracleKeeper(t testing.TB) (keeper.Keeper, sdk.Context) {
 	scopedKeeper := capabilityKeeper.ScopeToModule(ibcexported.ModuleName)
 	portKeeper := portkeeper.NewKeeper(scopedKeeper)
 	scopeModule := capabilityKeeper.ScopeToModule(types.ModuleName)
-	channelKeeper := channelkeeper.NewKeeper(appCodec, storeKey,nil, nil, portKeeper, scopeModule)
+	channelKeeper := channelkeeper.NewKeeper(appCodec, storeKey, nil, nil, portKeeper, scopeModule)
 
 	authKeeper := authkeeper.NewAccountKeeper(appCodec, runtime.NewKVStoreService(storeKey), authtypes.ProtoBaseAccount,
 		nil,
 		address.NewBech32Codec(sdk.GetConfig().GetBech32AccountAddrPrefix()),
 		sdk.GetConfig().GetBech32AccountAddrPrefix(),
-		authtypes.NewModuleAddress(govtypes.ModuleName).String(),)
+		authtypes.NewModuleAddress(govtypes.ModuleName).String())
 
 	k := keeper.NewKeeper(
 		appCodec,

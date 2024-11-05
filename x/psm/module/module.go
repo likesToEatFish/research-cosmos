@@ -23,11 +23,11 @@ import (
 
 	// this line is used by starport scaffolding # 1
 	govv1beta1 "github.com/cosmos/cosmos-sdk/x/gov/types/v1beta1"
+	oraclekeeper "github.com/likesToEatFish/research-cosmos/x/oracle/keeper"
+	"github.com/likesToEatFish/research-cosmos/x/psm/client/cli"
+	"github.com/likesToEatFish/research-cosmos/x/psm/keeper"
+	"github.com/likesToEatFish/research-cosmos/x/psm/types"
 	psmmodulev1 "github.com/onomyprotocol/reserve/api/reserve/psm/module/v1"
-	oraclekeeper "github.com/onomyprotocol/reserve/x/oracle/keeper"
-	"github.com/onomyprotocol/reserve/x/psm/client/cli"
-	"github.com/onomyprotocol/reserve/x/psm/keeper"
-	"github.com/onomyprotocol/reserve/x/psm/types"
 )
 
 var (

@@ -4,7 +4,7 @@ import (
 	"context"
 	// sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/onomyprotocol/reserve/x/psm/types"
+	"github.com/likesToEatFish/research-cosmos/x/psm/types"
 )
 
 func (k Keeper) SetParams(ctx context.Context, params types.Params) error {

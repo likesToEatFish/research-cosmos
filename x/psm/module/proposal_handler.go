@@ -7,8 +7,8 @@ import (
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types/v1beta1"
 
-	"github.com/onomyprotocol/reserve/x/psm/keeper"
-	"github.com/onomyprotocol/reserve/x/psm/types"
+	"github.com/likesToEatFish/research-cosmos/x/psm/keeper"
+	"github.com/likesToEatFish/research-cosmos/x/psm/types"
 )
 
 func NewPSMProposalHandler(k *keeper.Keeper) govtypes.Handler {

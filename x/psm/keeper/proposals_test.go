@@ -4,7 +4,7 @@ import (
 	"cosmossdk.io/math"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
-	"github.com/onomyprotocol/reserve/x/psm/types"
+	"github.com/likesToEatFish/research-cosmos/x/psm/types"
 )
 
 func (s *KeeperTestSuite) TestAddStableCoinProposal() {

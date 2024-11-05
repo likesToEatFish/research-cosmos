@@ -8,7 +8,7 @@ import (
 	"cosmossdk.io/math"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/onomyprotocol/reserve/x/psm/types"
+	"github.com/likesToEatFish/research-cosmos/x/psm/types"
 )
 
 type msgServer struct {

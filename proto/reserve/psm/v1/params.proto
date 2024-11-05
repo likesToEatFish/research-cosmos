@@ -5,7 +5,7 @@ import "amino/amino.proto";
 import "gogoproto/gogo.proto";
 import "cosmos_proto/cosmos.proto";
 
-option go_package = "github.com/onomyprotocol/reserve/x/psm/types";
+option go_package = "github.com/likesToEatFish/research-cosmos/x/psm/types";
 
 message Params {
   // total $nomUSD can mint

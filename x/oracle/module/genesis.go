@@ -4,8 +4,8 @@ import (
 	"context"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/onomyprotocol/reserve/x/oracle/keeper"
-	"github.com/onomyprotocol/reserve/x/oracle/types"
+	"github.com/likesToEatFish/research-cosmos/x/oracle/keeper"
+	"github.com/likesToEatFish/research-cosmos/x/oracle/types"
 )
 
 // InitGenesis initializes the module's state from a provided genesis state.

@@ -7,7 +7,7 @@ import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 import "reserve/vaults/params.proto";
 
-option go_package = "github.com/onomyprotocol/reserve/x/vaults/types";
+option go_package = "github.com/likesToEatFish/research-cosmos/x/vaults/types";
 
 // Query defines the gRPC querier service.
 service Query {

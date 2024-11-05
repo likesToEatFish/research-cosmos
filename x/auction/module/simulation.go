@@ -8,8 +8,8 @@ import (
 	simtypes "github.com/cosmos/cosmos-sdk/types/simulation"
 	"github.com/cosmos/cosmos-sdk/x/simulation"
 
+	"github.com/likesToEatFish/research-cosmos/x/auction/types"
 	"github.com/onomyprotocol/reserve/testutil/sample"
-	"github.com/onomyprotocol/reserve/x/auction/types"
 )
 
 // avoid unused import issue

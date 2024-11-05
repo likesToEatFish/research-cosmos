@@ -3,7 +3,7 @@ package keeper_test
 import (
 	"cosmossdk.io/math"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/onomyprotocol/reserve/x/vaults/types"
+	"github.com/likesToEatFish/research-cosmos/x/vaults/types"
 )
 
 func (s *KeeperTestSuite) TestVaultsStore() {

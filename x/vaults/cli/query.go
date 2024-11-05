@@ -9,7 +9,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/spf13/cobra"
 
-	"github.com/onomyprotocol/reserve/x/vaults/types"
+	"github.com/likesToEatFish/research-cosmos/x/vaults/types"
 )
 
 // GetQueryCmd returns the cli query commands for this module.

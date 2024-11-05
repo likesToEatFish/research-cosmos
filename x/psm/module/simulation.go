@@ -9,8 +9,8 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/simulation"
 
 	// "github.com/onomyprotocol/reserve/testutil/sample"
-	psmsimulation "github.com/onomyprotocol/reserve/x/psm/simulation"
-	"github.com/onomyprotocol/reserve/x/psm/types"
+	psmsimulation "github.com/likesToEatFish/research-cosmos/x/psm/simulation"
+	"github.com/likesToEatFish/research-cosmos/x/psm/types"
 )
 
 // avoid unused import issue

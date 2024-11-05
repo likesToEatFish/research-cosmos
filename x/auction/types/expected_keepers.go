@@ -7,7 +7,7 @@ import (
 
 	addresscodec "cosmossdk.io/core/address"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	vaulttypes "github.com/onomyprotocol/reserve/x/vaults/types"
+	vaulttypes "github.com/likesToEatFish/research-cosmos/x/vaults/types"
 )
 
 type LiquidateVaults struct {

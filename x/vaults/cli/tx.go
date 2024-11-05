@@ -10,7 +10,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/spf13/cobra"
 
-	"github.com/onomyprotocol/reserve/x/vaults/types"
+	"github.com/likesToEatFish/research-cosmos/x/vaults/types"
 )
 
 func GetTxCmd() *cobra.Command {

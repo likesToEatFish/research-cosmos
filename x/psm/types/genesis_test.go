@@ -3,7 +3,7 @@ package types_test
 import (
 	"testing"
 
-	"github.com/onomyprotocol/reserve/x/psm/types"
+	"github.com/likesToEatFish/research-cosmos/x/psm/types"
 	"github.com/stretchr/testify/require"
 )
 

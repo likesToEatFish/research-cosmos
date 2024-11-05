@@ -3,7 +3,7 @@ package keeper
 import (
 	"context"
 
-	"github.com/onomyprotocol/reserve/x/vaults/types"
+	"github.com/likesToEatFish/research-cosmos/x/vaults/types"
 )
 
 // GetParams get all parameters as types.Params

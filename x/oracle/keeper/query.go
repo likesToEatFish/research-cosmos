@@ -6,7 +6,7 @@ import (
 
 	errors "cosmossdk.io/errors"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/onomyprotocol/reserve/x/oracle/types"
+	"github.com/likesToEatFish/research-cosmos/x/oracle/types"
 )
 
 var _ types.QueryServer = Keeper{}

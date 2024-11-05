@@ -5,8 +5,8 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/onomyprotocol/reserve/x/oracle/bandtesting/x/oracle/keeper"
-	"github.com/onomyprotocol/reserve/x/oracle/bandtesting/x/oracle/types"
+	"github.com/likesToEatFish/research-cosmos/x/oracle/bandtesting/x/oracle/keeper"
+	"github.com/likesToEatFish/research-cosmos/x/oracle/bandtesting/x/oracle/types"
 )
 
 // InitGenesis performs genesis initialization for the oracle module.

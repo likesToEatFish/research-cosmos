@@ -12,8 +12,8 @@ import (
 	"cosmossdk.io/math"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/address"
-	oracletypes "github.com/onomyprotocol/reserve/x/oracle/types"
-	"github.com/onomyprotocol/reserve/x/vaults/types"
+	oracletypes "github.com/likesToEatFish/research-cosmos/x/oracle/types"
+	"github.com/likesToEatFish/research-cosmos/x/vaults/types"
 )
 
 func (k *Keeper) CreateNewVault(

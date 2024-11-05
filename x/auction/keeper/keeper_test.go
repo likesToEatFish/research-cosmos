@@ -8,10 +8,10 @@ import (
 
 	"github.com/stretchr/testify/suite"
 
+	"github.com/likesToEatFish/research-cosmos/x/auction/keeper"
+	"github.com/likesToEatFish/research-cosmos/x/auction/types"
+	vaultstypes "github.com/likesToEatFish/research-cosmos/x/vaults/types"
 	"github.com/onomyprotocol/reserve/app/apptesting"
-	"github.com/onomyprotocol/reserve/x/auction/keeper"
-	"github.com/onomyprotocol/reserve/x/auction/types"
-	vaultstypes "github.com/onomyprotocol/reserve/x/vaults/types"
 )
 
 type KeeperTestSuite struct {

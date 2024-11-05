@@ -15,7 +15,7 @@ import (
 	// sdk "github.com/cosmos/cosmos-sdk/types"
 	// govcli "github.com/cosmos/cosmos-sdk/x/gov/client/cli"
 	// govtypes "github.com/cosmos/cosmos-sdk/x/gov/types/v1beta1"
-	"github.com/onomyprotocol/reserve/x/oracle/types"
+	"github.com/likesToEatFish/research-cosmos/x/oracle/types"
 )
 
 // GetTxCmd returns the transaction commands for this module.

@@ -1,8 +1,8 @@
 package cli
 
 import (
-	"fmt"
 	"context"
+	"fmt"
 	"strconv"
 
 	"github.com/cosmos/gogoproto/proto"
@@ -12,7 +12,7 @@ import (
 	"github.com/spf13/cobra"
 
 	"github.com/cosmos/cosmos-sdk/client/flags"
-	"github.com/onomyprotocol/reserve/x/oracle/types"
+	"github.com/likesToEatFish/research-cosmos/x/oracle/types"
 )
 
 // GetQueryCmd returns the parent command for all modules/oracle CLi query commands.

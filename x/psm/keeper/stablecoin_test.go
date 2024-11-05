@@ -3,7 +3,7 @@ package keeper_test
 import (
 	"cosmossdk.io/math"
 
-	"github.com/onomyprotocol/reserve/x/psm/types"
+	"github.com/likesToEatFish/research-cosmos/x/psm/types"
 )
 
 func (s *KeeperTestSuite) TestStoreStablecoin() {

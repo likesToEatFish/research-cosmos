@@ -7,7 +7,7 @@ import (
 	"cosmossdk.io/collections"
 	errorsmod "cosmossdk.io/errors"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/onomyprotocol/reserve/x/auction/types"
+	"github.com/likesToEatFish/research-cosmos/x/auction/types"
 )
 
 type msgServer struct {

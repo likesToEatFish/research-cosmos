@@ -3,7 +3,7 @@ package auction
 import (
 	autocliv1 "cosmossdk.io/api/cosmos/autocli/v1"
 
-	"github.com/onomyprotocol/reserve/x/auction/types"
+	"github.com/likesToEatFish/research-cosmos/x/auction/types"
 )
 
 // AutoCLIOptions implements the autocli.HasAutoCLIConfig interface.

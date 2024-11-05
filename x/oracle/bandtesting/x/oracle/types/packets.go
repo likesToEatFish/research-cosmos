@@ -5,8 +5,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 
-	bandoracletypes "github.com/onomyprotocol/reserve/x/oracle/bandchain/oracle/types"
-
+	bandoracletypes "github.com/likesToEatFish/research-cosmos/x/oracle/bandchain/oracle/types"
 )
 
 // NewOracleRequestPacketData contructs a new OracleRequestPacketData instance

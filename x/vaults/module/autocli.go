@@ -3,7 +3,7 @@ package vaults
 import (
 	autocliv1 "cosmossdk.io/api/cosmos/autocli/v1"
 
-	"github.com/onomyprotocol/reserve/x/vaults/types"
+	"github.com/likesToEatFish/research-cosmos/x/vaults/types"
 )
 
 // AutoCLIOptions implements the autocli.HasAutoCLIConfig interface.

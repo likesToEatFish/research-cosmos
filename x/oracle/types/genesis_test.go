@@ -2,9 +2,7 @@ package types_test
 
 import (
 	"testing"
-
-	// "github.com/onomyprotocol/reserve/x/oracle/types"
-
+	// "github.com/likesToEatFish/research-cosmos/x/oracle/types"
 	// "github.com/stretchr/testify/require"
 )
 

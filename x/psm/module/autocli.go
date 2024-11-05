@@ -3,7 +3,7 @@ package psm
 import (
 	autocliv1 "cosmossdk.io/api/cosmos/autocli/v1"
 
-	"github.com/onomyprotocol/reserve/x/psm/types"
+	"github.com/likesToEatFish/research-cosmos/x/psm/types"
 )
 
 // AutoCLIOptions implements the autocli.HasAutoCLIConfig interface.

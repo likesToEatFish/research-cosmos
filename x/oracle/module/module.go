@@ -25,9 +25,9 @@ import (
 	// this line is used by starport scaffolding # 1
 
 	// modulev1 "github.com/onomyprotocol/reserve/api/reserve/oracle/module"
-	"github.com/onomyprotocol/reserve/x/oracle/client/cli"
-	"github.com/onomyprotocol/reserve/x/oracle/keeper"
-	"github.com/onomyprotocol/reserve/x/oracle/types"
+	"github.com/likesToEatFish/research-cosmos/x/oracle/client/cli"
+	"github.com/likesToEatFish/research-cosmos/x/oracle/keeper"
+	"github.com/likesToEatFish/research-cosmos/x/oracle/types"
 )
 
 var (

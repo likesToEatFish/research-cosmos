@@ -2,8 +2,8 @@ package oracle
 
 import (
 	"fmt"
-	"github.com/onomyprotocol/reserve/x/oracle/keeper"
-	"github.com/onomyprotocol/reserve/x/oracle/types"
+	"github.com/likesToEatFish/research-cosmos/x/oracle/keeper"
+	"github.com/likesToEatFish/research-cosmos/x/oracle/types"
 	"strconv"
 	"strings"
 
@@ -207,7 +207,7 @@ func (im IBCModule) OnAcknowledgementPacket(
 			ClientId:  int64(clientID),
 		})
 	case *channeltypes.Acknowledgement_Error:
-		im.keeper.DeleteBandCallDataRecord(ctx, uint64(clientID)) // nolint: all 
+		im.keeper.DeleteBandCallDataRecord(ctx, uint64(clientID)) // nolint: all
 		// nolint:errcheck //ignored on purpose
 		ctx.EventManager().EmitTypedEvent(&types.EventBandAckError{
 			AckError: resp.Error,

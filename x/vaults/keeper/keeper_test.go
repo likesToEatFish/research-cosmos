@@ -6,10 +6,10 @@ import (
 	"github.com/stretchr/testify/suite"
 
 	"cosmossdk.io/math"
+	"github.com/likesToEatFish/research-cosmos/x/vaults/keeper"
+	"github.com/likesToEatFish/research-cosmos/x/vaults/keeper/mock"
+	"github.com/likesToEatFish/research-cosmos/x/vaults/types"
 	"github.com/onomyprotocol/reserve/app/apptesting"
-	"github.com/onomyprotocol/reserve/x/vaults/keeper"
-	"github.com/onomyprotocol/reserve/x/vaults/keeper/mock"
-	"github.com/onomyprotocol/reserve/x/vaults/types"
 )
 
 type KeeperTestSuite struct {

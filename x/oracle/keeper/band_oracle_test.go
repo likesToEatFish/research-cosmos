@@ -8,9 +8,9 @@ import (
 	tmproto "github.com/cometbft/cometbft/proto/tendermint/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
+	"github.com/likesToEatFish/research-cosmos/x/oracle/types"
+	"github.com/likesToEatFish/research-cosmos/x/oracle/utils"
 	"github.com/onomyprotocol/reserve/app"
-	"github.com/onomyprotocol/reserve/x/oracle/types"
-	"github.com/onomyprotocol/reserve/x/oracle/utils"
 	"github.com/stretchr/testify/require"
 )
 
@@ -362,8 +362,8 @@ func TestProcessBandOraclePrices(t *testing.T) {
 			},
 			oracleOutput: types.BandOutput{
 				Responses: []types.Response{
-					{Symbol: "ATOM", ResponseCode: 0, Rate: 100 * types.BandPriceMultiplier},  
-					{Symbol: "BTC", ResponseCode: 0, Rate: 50000 * types.BandPriceMultiplier}, 
+					{Symbol: "ATOM", ResponseCode: 0, Rate: 100 * types.BandPriceMultiplier},
+					{Symbol: "BTC", ResponseCode: 0, Rate: 50000 * types.BandPriceMultiplier},
 				},
 			},
 			expectedError: false,

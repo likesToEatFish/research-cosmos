@@ -23,9 +23,8 @@ import (
 	host "github.com/cosmos/ibc-go/v8/modules/core/24-host"
 	"github.com/cosmos/ibc-go/v8/modules/core/exported"
 
-	oraclekeeper "github.com/onomyprotocol/reserve/x/oracle/bandtesting/x/oracle/keeper"
-	"github.com/onomyprotocol/reserve/x/oracle/bandtesting/x/oracle/types"
-
+	oraclekeeper "github.com/likesToEatFish/research-cosmos/x/oracle/bandtesting/x/oracle/keeper"
+	"github.com/likesToEatFish/research-cosmos/x/oracle/bandtesting/x/oracle/types"
 )
 
 var (

@@ -12,7 +12,7 @@ import (
 	capabilitytypes "github.com/cosmos/ibc-go/modules/capability/types"
 	host "github.com/cosmos/ibc-go/v8/modules/core/24-host"
 
-	"github.com/onomyprotocol/reserve/x/oracle/bandtesting/x/oracle/types"
+	"github.com/likesToEatFish/research-cosmos/x/oracle/bandtesting/x/oracle/types"
 )
 
 type Keeper struct {

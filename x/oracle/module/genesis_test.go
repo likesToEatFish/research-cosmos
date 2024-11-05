@@ -5,8 +5,8 @@ package oracle_test
 
 // 	keepertest "github.com/onomyprotocol/reserve/testutil/keeper"
 // 	"github.com/onomyprotocol/reserve/testutil/nullify"
-// 	oracle "github.com/onomyprotocol/reserve/x/oracle/module"
-// 	"github.com/onomyprotocol/reserve/x/oracle/types"
+// 	oracle "github.com/likesToEatFish/research-cosmos/x/oracle/module"
+// 	"github.com/likesToEatFish/research-cosmos/x/oracle/types"
 
 // 	"github.com/stretchr/testify/require"
 // )

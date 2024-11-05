@@ -3,8 +3,8 @@ package psm
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/onomyprotocol/reserve/x/psm/keeper"
-	"github.com/onomyprotocol/reserve/x/psm/types"
+	"github.com/likesToEatFish/research-cosmos/x/psm/keeper"
+	"github.com/likesToEatFish/research-cosmos/x/psm/types"
 )
 
 // InitGenesis initializes the module's state from a provided genesis state.

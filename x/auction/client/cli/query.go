@@ -8,7 +8,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/spf13/cobra"
 
-	"github.com/onomyprotocol/reserve/x/auction/types"
+	"github.com/likesToEatFish/research-cosmos/x/auction/types"
 )
 
 func GetQueryCmd() *cobra.Command {

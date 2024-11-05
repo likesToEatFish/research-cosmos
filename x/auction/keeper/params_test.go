@@ -5,8 +5,8 @@ import (
 
 	"github.com/stretchr/testify/require"
 
+	"github.com/likesToEatFish/research-cosmos/x/oracle/types"
 	keepertest "github.com/onomyprotocol/reserve/testutil/keeper"
-	"github.com/onomyprotocol/reserve/x/oracle/types"
 )
 
 func TestGetParams(t *testing.T) {
