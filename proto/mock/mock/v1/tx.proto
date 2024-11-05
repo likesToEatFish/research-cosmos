@@ -16,6 +16,8 @@ service Msg {
   // UpdateParams defines a (governance) operation for updating the module
   // parameters. The authority defaults to the x/gov module account.
   rpc UpdateParams(MsgUpdateParams) returns (MsgUpdateParamsResponse);
+
+  rpc SetPrice(MsgSetPrice) returns (MsgSetPriceResponse);
 }
 
 // MsgUpdateParams is the Msg/UpdateParams request type.
@@ -38,3 +40,19 @@ message MsgUpdateParams {
 // MsgUpdateParamsResponse defines the response structure for executing a
 // MsgUpdateParams message.
 message MsgUpdateParamsResponse {}
+
+message MsgSetPrice{
+  option (cosmos.msg.v1.signer) = "authority";
+  option (amino.name) = "mock/x/mock/MsgSetPrice";
+  string denom = 1;
+
+  bytes price = 2 [
+    (cosmos_proto.scalar)  = "cosmos.Dec",
+    (gogoproto.customtype) = "cosmossdk.io/math.LegacyDec",
+    (gogoproto.nullable)   = false
+  ];
+
+  string authority = 3;
+}
+
+message MsgSetPriceResponse {}

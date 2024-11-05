@@ -1,12 +1,14 @@
 package keeper
 
 import (
+	"context"
 	"fmt"
 
 	"cosmossdk.io/collections"
 	"cosmossdk.io/core/address"
 	"cosmossdk.io/core/store"
 	"cosmossdk.io/log"
+	"cosmossdk.io/math"
 	"github.com/cosmos/cosmos-sdk/codec"
 
 	"github.com/test/mock/x/mock/types"
@@ -25,6 +27,8 @@ type (
 
 		Schema collections.Schema
 		Params collections.Item[types.Params]
+
+		price map[string]math.LegacyDec
 		// this line is used by starport scaffolding # collection/type
 
 	}
@@ -52,6 +56,7 @@ func NewKeeper(
 		logger:       logger,
 
 		Params: collections.NewItem(sb, types.ParamsKey, "params", codec.CollValue[types.Params](cdc)),
+		price:  make(map[string]math.LegacyDec),
 		// this line is used by starport scaffolding # collection/instantiate
 	}
 
@@ -72,4 +77,19 @@ func (k Keeper) GetAuthority() string {
 // Logger returns a module-specific logger.
 func (k Keeper) Logger() log.Logger {
 	return k.logger.With("module", fmt.Sprintf("x/%s", types.ModuleName))
+}
+
+func (k Keeper) SetPrice(goCtx context.Context, msg *types.MsgSetPrice) (*types.MsgSetPriceResponse, error) {
+
+	k.price[msg.Denom] = msg.Price
+
+	return &types.MsgSetPriceResponse{}, nil
+}
+
+func (k queryServer) Price(goCtx context.Context, msg *types.QueryPriceRequest) (*types.QueryPriceResponse, error) {
+	p := k.k.GetPrice(goCtx, msg.Denom1, msg.Denom2)
+
+	return &types.QueryPriceResponse{
+		Price: p.String(),
+	}, nil
 }
