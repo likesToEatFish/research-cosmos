@@ -20,8 +20,10 @@ import (
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	"google.golang.org/grpc"
 
+	"github.com/spf13/cobra"
 	// this line is used by starport scaffolding # 1
 
+	"github.com/test/mock/x/mock/cli"
 	"github.com/test/mock/x/mock/keeper"
 	"github.com/test/mock/x/mock/types"
 )
@@ -160,6 +162,17 @@ func (am AppModule) IsOnePerModuleType() {}
 
 // IsAppModule implements the appmodule.AppModule interface.
 func (am AppModule) IsAppModule() {}
+
+// GetTxCmd returns the root Tx command for the module.
+// These commands enrich the AutoCLI tx commands.
+func (a AppModuleBasic) GetTxCmd() *cobra.Command {
+	return cli.GetTxCmd()
+}
+
+// GetQueryCmd returns no root query command for the oracle module.
+func (a AppModuleBasic) GetQueryCmd() *cobra.Command {
+	return cli.GetQueryCmd()
+}
 
 // ----------------------------------------------------------------------------
 // App Wiring Setup
